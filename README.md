@@ -34,9 +34,9 @@ brew services start redis
 ```
 
 
-### Tech Stack
+## Tech Stack
 
-#### Backend
+### Backend
 - [ExpressJS](https://www.npmjs.com/package/express): For server
 - [Joi](https://www.npmjs.com/package/joi): For request validation 
 - [Redis](https://www.npmjs.com/package/redis): Redis cache client
