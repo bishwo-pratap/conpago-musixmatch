@@ -66,3 +66,6 @@ http://localhost:3000/v1/docs/
 ```
 ![conpago-swagger-ui](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/f766c2cf-7abd-4d87-b20d-9820a423b3e7)
 
+#### Cache example
+![cache-example](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/831692df-a136-4be8-98dd-0f038a1153dc)
+
