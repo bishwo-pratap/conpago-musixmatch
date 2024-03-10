@@ -1,6 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const { mmApiService } = require('../services');
-const { getCacheData } = require('../middlewares/redis');
+const { getCacheData } = require('../utils/redis');
 
 const getTopArtists = catchAsync(async (req, res) => {
   const redisData = await getCacheData(
