@@ -1,0 +1,262 @@
+components:
+  schemas:
+    TopArtists:
+      type: object
+      properties:
+        data: 
+          type: object
+          properties:
+            artist_list:
+              type: array
+              items:
+                type: object
+                properties:
+                  artist:
+                    type: object
+                    properties:
+                      artist_id: 
+                        type: number
+                      artist_name: 
+                        type: string
+                      artist_name_translation_list: 
+                        type: object
+                      artist_country: 
+                        type: string
+                      artist_rating: 
+                        type: number
+                      artist_twitter_url: 
+                        type: string
+    ArtistAlbums:
+      type: object
+      properties:
+        data: 
+          type: object
+          properties:
+            album_list:
+              type: array
+              items:
+                type: object
+                properties:
+                  album:
+                    type: object
+                    properties:
+                      artist_id: 
+                        type: number
+                      artist_name: 
+                        type: string
+                      album_id: 
+                        type: number
+                      album_name: 
+                        type: string
+                      album_rating: 
+                        type: number
+                      album_release_date: 
+                        type: string
+                      primary_genres:
+                        type: object
+                        properties:
+                          music_genre_list:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                music_genre:
+                                  type: object
+                      album_copyright:
+                        type: string
+                      album_label:
+                        type: string
+                      external_ids:
+                        type: object
+                        properties:
+                          spotify:
+                            type: array
+                            items:
+                              type: string
+                          itunes:
+                            type: array
+                            items:
+                              type: string
+                          amazon_music:
+                            type: array
+                            items:
+                              type: string
+    AlbumTracks:
+      type: object
+      properties:
+        data: 
+          type: object
+          properties:
+            track_list:
+              type: array
+              items:
+                type: object
+                properties:
+                  track:
+                    type: object
+                    properties:
+                      track_id: 
+                        type: number
+                      track_name: 
+                        type: string
+                      track_name_translation_list:
+                        type: array
+                      track_rating:
+                        type: number
+                      commontrack_id:
+                        type: number
+                      instrumental:
+                        type: number
+                      explicit:
+                        type: number
+                      has_lyrics:
+                        type: number
+                      has_subtitles:
+                        type: number
+                      has_richsync:
+                        type: number
+                      num_favourite:
+                        type: number
+                      album_id: 
+                        type: number
+                      album_name: 
+                        type: string
+                      artist_id:
+                        type: number
+                      artist_name:
+                        type: string
+                      track_share_url:
+                        type: string
+                      track_edit_url:
+                        type: string
+                      restricted:
+                        type: number
+                      primary_genres:
+                        type: object
+                        properties:
+                          music_genre_list:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                music_genre:
+                                  type: object
+                                  properties:
+                                    music_genre_id:
+                                      type: number
+                                    music_genre_parent_id:
+                                      type: number
+                                    music_genre_name:
+                                      type: string
+                                    music_genre_name_extended:
+                                      type: string
+                                    music_genre_vanity:
+                                      type: string
+    TrackLyrics:
+      type: object
+      properties:
+        data: 
+          type: object
+          properties:
+            lyrics:
+              type: object
+              properties:
+                lyrics_id: 
+                  type: number
+                explicit: 
+                  type: number
+                lyrics_body:
+                  type: string
+                script_tracking_url:
+                  type: string
+                pixel_tracking_url: 
+                  type: string
+                lyrics_copyright:
+                  type: string
+                updated_time:
+                  type: string
+
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        role:
+          type: string
+          enum: [user]
+        country:
+          type: string
+        isEmailVerified:
+          type: boolean
+      example:
+        role: user
+        country: AU
+        name: fake name
+        isEmailVerified: true
+        email: fake@example.com
+        id: 5ebac534954b54139806c112
+    Token:
+      type: string
+      example:
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWJhYzUzNDk1NGI1NDEzOTgwNmMxMTIiLCJpYXQiOjE1ODkyOTg0ODQsImV4cCI6MTU4OTMwMDI4NH0.m1U63blB0MLej_WfB7yC2FTMnCziif9X8yzwDEfJXAg
+    ExpiresIn:
+      type: string
+      format: date-time
+      example:
+        expiresIn: 2024-05-12T16:18:04.793Z
+    Error:
+      type: object
+      properties:
+        code:
+          type: number
+        message:
+          type: string
+
+  responses:
+    DuplicateEmail:
+      description: Email already taken
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Email already taken
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 401
+            message: Please authenticate
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 403
+            message: Forbidden
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 404
+            message: Not found
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
