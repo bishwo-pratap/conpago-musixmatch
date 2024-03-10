@@ -31,7 +31,6 @@ nvm use 18
 #### Start redis for macOS
 ```
 brew services start redis
-
 ```
 
 
