@@ -60,14 +60,18 @@ cp .env.example .env
 ```
 MM_API_KEY= xxxxxxxxxxx
 ```
-#### 3. start backend with pm2
+#### 3. add MM_API_KEY value in .env file
 ```
-cd backend && npm start
+cd backend && npm i
+```
+#### 4. start backend with pm2
+```
+npm start
 ```
 #### OR
-#### 3. start backend the vanilla way
+#### 4. start backend the vanilla way
 ```
-cd backend && npm run dev
+npm run dev
 ```
 ![pm2_startup](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/45f5f732-b9ae-43ad-b877-2443f0c8bf05)
 
