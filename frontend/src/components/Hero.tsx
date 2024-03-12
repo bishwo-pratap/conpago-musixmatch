@@ -25,7 +25,7 @@ export default function Hero() {
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            Unlock the Power of Lyrics with Lyric Harmony: Your Melodic Playground for Music and Words!
+            Unlock the Power of Lyrics with MusixMatch: Your Melodic Playground for Music and Words!
           </Text>
           <Stack direction={'row'}>
             <Link as={NextLink} href='/sign-in'>
@@ -34,7 +34,7 @@ export default function Hero() {
                 rounded={'full'}
                 color={'white'}
                 _hover={{ bg: 'pink.500' }}>
-                Sign In
+                Get Started
               </Button>
             </Link>
           </Stack>
