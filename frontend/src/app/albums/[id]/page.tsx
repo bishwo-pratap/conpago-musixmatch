@@ -9,16 +9,17 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { ApiHelper } from '@/api';
+import { routesConfig } from '@/config';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { IoArrowBack } from "react-icons/io5";
 import { User } from '@/store/slice/userSlice';
 import AlbumsList from '@/components/AlbumsList';
+import DataSkeleton from '@/components/DataSkeleton';
 import { Artists } from '@/store/slice/artistsSlice';
 import { useParams, useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Albums, setAlbums } from '@/store/slice/albumsSlice';
-import DataSkeleton from '@/components/DataSkeleton';
 
 const AlbumsPage = () => {
   const pathParams = useParams();
@@ -53,7 +54,8 @@ const AlbumsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response: any = await ApiHelper('user/artist-albums', {
+        const { albumsEndpoint } = routesConfig;
+        const response: any = await ApiHelper(albumsEndpoint, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${user?.token}`

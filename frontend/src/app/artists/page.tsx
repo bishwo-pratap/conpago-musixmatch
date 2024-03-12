@@ -8,13 +8,14 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { ApiHelper } from '@/api';
+import { routesConfig } from '@/config';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { User } from '@/store/slice/userSlice';
 import ArtistList from '@/components/ArtistsList';
+import DataSkeleton from '@/components/DataSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { Artists, setArtists } from '@/store/slice/artistsSlice';
-import DataSkeleton from '@/components/DataSkeleton';
 
 const ArtistsPage = () => {
   const { user } = useSelector((state : User) => state);
@@ -31,7 +32,8 @@ const ArtistsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response: any = await ApiHelper('user/top-artists', {
+        const { artistsEndpoint } = routesConfig;
+        const response: any = await ApiHelper(artistsEndpoint, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${user?.token}`
