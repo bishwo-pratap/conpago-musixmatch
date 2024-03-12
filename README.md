@@ -72,9 +72,8 @@ cd backend && npm run dev
 ![pm2_startup](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/45f5f732-b9ae-43ad-b877-2443f0c8bf05)
 
 #### Swagger UI
-```
 [http://localhost:3000/v1/docs/](http://localhost:3000/v1/docs/)
-```
+
 ![conpago-swagger-ui](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/f766c2cf-7abd-4d87-b20d-9820a423b3e7)
 
 #### Cache example
@@ -94,6 +93,4 @@ cd backend && npm run dev
 cd frontent && npm run dev
 ```
 #### 2. Open frontend
-```
 [http://localhost:3001](http://localhost:3001)
-```
