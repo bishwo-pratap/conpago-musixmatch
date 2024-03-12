@@ -161,7 +161,7 @@ export default function NavBar() {
               </MenuButton>
               <MenuList>
                 {localUserState && 
-                  <MenuItem p={6}>Welcome {localUserState.user.name}</MenuItem>
+                  <MenuItem p={6}>Welcome {localUserState?.user?.name}</MenuItem>
                 }
                 <MenuItem onClick={logoutUser}><MdLogout />&nbsp;&nbsp;Logout</MenuItem>
               </MenuList>
