@@ -5,8 +5,8 @@ This is a technical assessment for Conpago. This project utilizes [MusixMatch](h
 `Please read carefully for proper set up.`
 
 ### Architecture Overview
+![musixmatch](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/fbdd8fda-4bb9-407f-a728-a70e26c19866)
 
-![musixmatch](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/d4962ec7-085d-4816-a03d-b529dbb93c3a)
 
 
 ### Prerequisites
