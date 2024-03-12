@@ -101,4 +101,4 @@ cd frontent && npm run dev
 ```
 #### 2. Open frontend
 [http://localhost:3001](http://localhost:3001)
-![frontent](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/95316b9b-14ea-4e3f-bd38-b5c38d4d0335){:target="_blank" rel="noopener"}
+![frontent](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/95316b9b-14ea-4e3f-bd38-b5c38d4d0335)
