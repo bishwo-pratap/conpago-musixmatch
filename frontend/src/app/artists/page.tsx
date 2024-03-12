@@ -14,9 +14,9 @@ import { User } from '@/store/slice/userSlice';
 import ArtistList from '@/components/ArtistsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { Artists, setArtists } from '@/store/slice/artistsSlice';
-import DataSkeleton from '@/components/dataSkeleton';
+import DataSkeleton from '@/components/DataSkeleton';
 
-const Artists = () => {
+const ArtistsPage = () => {
   const { user } = useSelector((state : User) => state);
   const artists = useSelector((state : Artists) => state.artists);
   const [artistList, setArtistList] = useState<Artists[]>([]);
@@ -107,4 +107,4 @@ const Artists = () => {
   )
 }
 
-export default Artists
+export default ArtistsPage

@@ -23,7 +23,7 @@ import { Lyrics, setLyrics, clearLyrics } from '@/store/slice/lyricsSlice';
 import { Albums } from '@/store/slice/albumsSlice';
 import LyricsSkeleton from '@/components/LyricsSkeleton';
 
-export default function Lyrics() {
+export default function LyricsPage() {
   const pathParams = useParams();
   const { id } = pathParams;
   const { push } = useRouter();
@@ -155,7 +155,6 @@ export default function Lyrics() {
           {!loading && (
             <Text
               fontSize={{ base: '16px', lg: '18px' }}
-              color={useColorModeValue('gray.500', 'gray.300')}
               fontWeight={'500'}
               pl={40}
               mb={'4'}>
