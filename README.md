@@ -103,9 +103,13 @@ npm run dev
 - [React Icons](https://www.npmjs.com/package/react-icons): Icons Pack
 
 #### Steps
-#### 1. start frontend
+#### 1. Install Frontend Dependencies
 ```
-cd frontent && npm run dev
+cd frontend && npm run dev
+```
+#### 2. Start Frontend
+```
+npm run dev
 ```
 #### 2. Open frontend
 [http://localhost:3001](http://localhost:3001)
