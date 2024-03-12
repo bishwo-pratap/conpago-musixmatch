@@ -8,8 +8,15 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  Stat,
+  StatArrow,
+  StatGroup,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { useState } from 'react'
 import { Link } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
@@ -29,6 +36,8 @@ const TrackList = (
   const bgColorLight = checked ? 'purple.400' : 'gray.300'
   const colorTextDark = checked ? 'white' : 'purple.500'
   const bgColorDark = checked ? 'purple.400' : 'gray.300'
+  const [btnLoading, setBtnLoading] = useState(false)
+  const [randomGrowth] = useState((Math.random()*100).toFixed(2))
 
   const getGenres = () => {
     if (
@@ -36,7 +45,7 @@ const TrackList = (
       !primaryGenres.music_genre_list || 
       !Array.isArray(primaryGenres.music_genre_list)
     ) {
-      return '';
+      return 'N/A';
     }
   
     return primaryGenres.music_genre_list.map((item) => {
@@ -46,6 +55,7 @@ const TrackList = (
   }
 
   const onViewLyricsClick = async (name: string, link: string) =>{
+    setBtnLoading(true)
     await dispatch(setTrackName({name}))
     push(link)
   }
@@ -78,7 +88,7 @@ const TrackList = (
             </ListItem>
             <ListItem key={trackId+'_genres'}>
               <ListIcon as={SiMicrogenetics} color="teal.400" />
-              {getGenres()}
+              Genres: {getGenres()}
             </ListItem>
             <ListItem key={trackRating}>
               <ListIcon as={FaShareAltSquare} color="teal.400" />
@@ -97,7 +107,16 @@ const TrackList = (
           </List>
         </Flex>
         <Flex minW={100}>
-          <Heading size={'md'}>{trackRating || 0}/100</Heading>
+          <StatGroup>
+            <Stat>
+              <StatLabel>Track Rating</StatLabel>
+              <StatNumber>{trackRating || 0} / 100</StatNumber>
+              <StatHelpText>
+                <StatArrow type={trackRating >= 50 ? 'increase' : 'decrease'} />
+                {randomGrowth}%
+              </StatHelpText>
+            </Stat>
+          </StatGroup>
         </Flex>
       <Flex minW={100}>
         <Button
@@ -105,6 +124,9 @@ const TrackList = (
           fontSize={'sm'}
           size="md"
           fontWeight={600}
+          isLoading={btnLoading}
+          loadingText='Redirecting'
+          spinnerPlacement='end'
           color={useColorModeValue(colorTextLight, colorTextDark)}
           bgColor={useColorModeValue(bgColorLight, bgColorDark)}
           onClick={() => onViewLyricsClick(trackName, `/lyrics/${trackId}`)}

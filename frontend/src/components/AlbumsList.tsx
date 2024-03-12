@@ -8,8 +8,15 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  Stat,
+  StatArrow,
+  StatGroup,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { useState } from 'react'
 import NextLink from 'next/link'
 import { Link } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
@@ -24,11 +31,13 @@ const AlbumsList = ({ albumId, albumCopyright, albumName, albumRating, albumRele
   const dispatch = useDispatch();
   const colorTextLight = checked ? 'white' : 'purple.600'
   const bgColorLight = checked ? 'purple.400' : 'gray.300'
-
   const colorTextDark = checked ? 'white' : 'purple.500'
   const bgColorDark = checked ? 'purple.400' : 'gray.300'
+  const [btnLoading, setBtnLoading] = useState(false)
+  const [randomGrowth] = useState((Math.random()*100).toFixed(2))
 
   const onViewTracksClick = async (name: string, link: string) =>{
+    setBtnLoading(true)
     await dispatch(setAlbumName({name}))
     await dispatch(setAlbumId({id: albumId}))
     push(link)
@@ -62,7 +71,16 @@ const AlbumsList = ({ albumId, albumCopyright, albumName, albumRating, albumRele
           </List>
         </Flex>
         <Flex minW={100}>
-          <Heading size={'md'}>{albumRating || 0}/100</Heading>
+        <StatGroup>
+            <Stat>
+              <StatLabel>Album Rating</StatLabel>
+              <StatNumber>{albumRating || 0} / 100</StatNumber>
+              <StatHelpText>
+                <StatArrow type={albumRating >= 50 ? 'increase' : 'decrease'} />
+                {randomGrowth}%
+              </StatHelpText>
+            </Stat>
+          </StatGroup>
         </Flex>
       <Flex minW={100}>
         <Link as={NextLink} href={`/tracks/${albumId}`}>
@@ -70,6 +88,9 @@ const AlbumsList = ({ albumId, albumCopyright, albumName, albumRating, albumRele
             fontSize={'sm'}
             size="md"
             fontWeight={600}
+            isLoading={btnLoading}
+            loadingText='Redirecting'
+            spinnerPlacement='end'
             color={useColorModeValue(colorTextLight, colorTextDark)}
             bgColor={useColorModeValue(bgColorLight, bgColorDark)}
             onClick={() => onViewTracksClick(albumName, `/tracks/${albumId}`)}
