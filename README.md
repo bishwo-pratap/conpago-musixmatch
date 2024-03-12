@@ -73,10 +73,27 @@ cd backend && npm run dev
 
 #### Swagger UI
 ```
-http://localhost:3000/v1/docs/
+[http://localhost:3000/v1/docs/](http://localhost:3000/v1/docs/)
 ```
 ![conpago-swagger-ui](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/f766c2cf-7abd-4d87-b20d-9820a423b3e7)
 
 #### Cache example
 ![cache-example](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/831692df-a136-4be8-98dd-0f038a1153dc)
 
+### Frontend
+- [NextJS](https://nextjs.org/): React based framework
+- [ChakraUI](https://chakra-ui.com/): UI and components Library
+- [Redux](https://www.npmjs.com/package/redux)
+- [formik](https://www.npmjs.com/package/formik): Form control
+- [yup](https://www.npmjs.com/package/yup): Form validation
+- [React Icons](https://www.npmjs.com/package/react-icons): Icons pack
+
+#### Steps
+#### 1. start frontend
+```
+cd frontent && npm run dev
+```
+#### 2. Open frontend
+```
+[http://localhost:3001](http://localhost:3001)
+```
