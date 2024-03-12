@@ -5,6 +5,7 @@ This is a technical assessment for Conpago. This project utilizes [MusixMatch](h
 `Please read carefully for proper set up.`
 
 ### Architecture Overview
+
 ![musixmatch](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/fc38dc93-282e-4b5e-b3d8-a0da2069b08b)
 
 
@@ -83,6 +84,7 @@ npm start
 ```
 npm run dev
 ```
+
 ![pm2_startup](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/45f5f732-b9ae-43ad-b877-2443f0c8bf05)
 
 #### Swagger UI
@@ -91,6 +93,7 @@ npm run dev
 ![conpago-swagger-ui](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/f766c2cf-7abd-4d87-b20d-9820a423b3e7)
 
 #### Cache example
+
 ![cache-example](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/831692df-a136-4be8-98dd-0f038a1153dc)
 
 ### Frontend
@@ -112,5 +115,6 @@ npm run dev
 ```
 #### 2. Open frontend
 [http://localhost:3001](http://localhost:3001)
+
 ![new-landing](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/631288ef-1633-419f-8002-6772a269f9d3)
 
