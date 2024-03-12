@@ -21,12 +21,13 @@ import NextLink from 'next/link';
 import { useState } from 'react';
 import { ApiHelper } from '@/api';
 import { Link } from '@chakra-ui/react';
+import { routesConfig } from '@/config';
+import { redirect } from 'next/navigation';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormTypesProps } from '../../types/form.types';
 import { User, setUser } from '@/store/slice/userSlice';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { redirect } from 'next/navigation';
 
 const countries = [
   { "label": "United States", "value": "USA" },
@@ -68,18 +69,22 @@ export default function SignUp() {
   }
   
   const handleSubmit = async (values:Record<string,string>) => {
-    console.log('Form submitted:', values);
-    const body = {...values};
-    delete body.confirmPassword;
-    const response: any = await ApiHelper('auth/register', {
-      method: 'POST',
-      body
-    })
-    if(response.code === 401) {
-      setSignUpErrorMessage(response.message)
+    try {
+      const { signUpEndpoint } = routesConfig;
+      const body = {...values};
+      delete body.confirmPassword;
+      const response: any = await ApiHelper(signUpEndpoint, {
+        method: 'POST',
+        body
+      })
+      if(response.code === 401) {
+        setSignUpErrorMessage(response.message)
+      }
+      dispatch(setUser(response))
+      redirect('/artists')
+    } catch (error) {
+      console.error(error)
     }
-    dispatch(setUser(response))
-    redirect('/artists')
   };
 
   return (

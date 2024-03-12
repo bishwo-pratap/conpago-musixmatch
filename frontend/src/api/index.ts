@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/v1';
+import { routesConfig } from "@/config";
 
 interface ApiHelperOptions {
   method?: string;
@@ -7,7 +7,8 @@ interface ApiHelperOptions {
 }
 
 export const ApiHelper = async <T>(endpoint: string, options: ApiHelperOptions = {}): Promise<T> => {
-  const response = await fetch(`${apiUrl}/${endpoint}`, {
+  const { baseUrl } = routesConfig;
+  const response = await fetch(`${baseUrl}/${endpoint}`, {
     method: options.method || 'GET',
     headers: {
       'Content-Type': 'application/json',

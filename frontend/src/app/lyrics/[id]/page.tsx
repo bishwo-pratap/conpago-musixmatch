@@ -11,17 +11,18 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { ApiHelper } from '@/api';
+import { routesConfig } from '@/config';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { IoArrowBack } from "react-icons/io5";
 import { User } from '@/store/slice/userSlice';
+import { Tracks } from '@/store/slice/trackSlice';
+import { Albums } from '@/store/slice/albumsSlice';
 import { Artists } from '@/store/slice/artistsSlice';
 import { useParams, useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
-import { Tracks } from '@/store/slice/trackSlice';
-import { Lyrics, setLyrics, clearLyrics } from '@/store/slice/lyricsSlice';
-import { Albums } from '@/store/slice/albumsSlice';
 import LyricsSkeleton from '@/components/LyricsSkeleton';
+import { Lyrics, setLyrics, clearLyrics } from '@/store/slice/lyricsSlice';
 
 export default function LyricsPage() {
   const pathParams = useParams();
@@ -69,7 +70,8 @@ export default function LyricsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response: any = await ApiHelper('user/track-lyrics', {
+        const { lyricsEndpoint } = routesConfig;
+        const response: any = await ApiHelper(lyricsEndpoint, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${user?.token}`

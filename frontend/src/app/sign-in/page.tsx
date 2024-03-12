@@ -19,7 +19,8 @@ import * as Yup from 'yup';
 import NextLink from 'next/link';
 import { useState } from 'react';
 import { ApiHelper } from '@/api';
-import { Link } from '@chakra-ui/react'
+import { Link } from '@chakra-ui/react';
+import { routesConfig } from '@/config';
 import { redirect } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { User, setUser } from '@/store/slice/userSlice';
@@ -54,7 +55,8 @@ export default function SignIn() {
   
   const handleSubmit = async (values: SignInValues, {resetForm}: FormikHelpers<SignInValues>) => {
     try {
-      const response: any = await ApiHelper('auth/login', {
+      const { signInEndpoint } = routesConfig;
+      const response: any = await ApiHelper(signInEndpoint, {
         method: 'POST',
         body: values
       })
