@@ -45,7 +45,7 @@ const TrackList = (
       !primaryGenres.music_genre_list || 
       !Array.isArray(primaryGenres.music_genre_list)
     ) {
-      return '';
+      return 'N/A';
     }
   
     return primaryGenres.music_genre_list.map((item) => {
@@ -88,7 +88,7 @@ const TrackList = (
             </ListItem>
             <ListItem key={trackId+'_genres'}>
               <ListIcon as={SiMicrogenetics} color="teal.400" />
-              {getGenres()}
+              Genres: {getGenres()}
             </ListItem>
             <ListItem key={trackRating}>
               <ListIcon as={FaShareAltSquare} color="teal.400" />
