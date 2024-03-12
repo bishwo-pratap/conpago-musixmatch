@@ -6,7 +6,8 @@ This is a technical assessment for Conpago. This project utilizes [MusixMatch](h
 
 ### Architecture Overview
 
-![musixmatch](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/2e46ffbb-97d6-4252-808d-c6610e62b0e9)
+![musixmatch](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/dc585022-6345-4c51-bc92-25a4143c5699)
+
 
 
 
