@@ -36,6 +36,14 @@ nvm use 18
 brew services start redis
 ```
 
+#### Clone the project
+```
+git clone https://github.com/bishwo-pratap/conpago-musixmatch.git
+```
+#### Access the project
+```
+cd conpago-musixmatch
+```
 
 ## Tech Stack
 
@@ -87,12 +95,12 @@ npm run dev
 ![cache-example](https://github.com/bishwo-pratap/conpago-musixmatch/assets/19890839/831692df-a136-4be8-98dd-0f038a1153dc)
 
 ### Frontend
-- [NextJS](https://nextjs.org/): React based framework
-- [ChakraUI](https://chakra-ui.com/): UI and components Library
-- [Redux](https://www.npmjs.com/package/redux)
-- [formik](https://www.npmjs.com/package/formik): Form control
-- [yup](https://www.npmjs.com/package/yup): Form validation
-- [React Icons](https://www.npmjs.com/package/react-icons): Icons pack
+- [NextJS](https://nextjs.org/): React Based Framework
+- [ChakraUI](https://chakra-ui.com/): UI and Components Library
+- [Redux](https://www.npmjs.com/package/redux): State Management Library
+- [formik](https://www.npmjs.com/package/formik): Form Controls
+- [yup](https://www.npmjs.com/package/yup): Form Validation
+- [React Icons](https://www.npmjs.com/package/react-icons): Icons Pack
 
 #### Steps
 #### 1. start frontend
