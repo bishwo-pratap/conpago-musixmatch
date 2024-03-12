@@ -53,7 +53,7 @@ brew services start redis
 #### Steps
 #### 1. rename .env.sample to .env file
 ```
-cp .env.example .env
+cd backend && cp .env.example .env
 ```
 
 #### 2. add MM_API_KEY value in .env file
@@ -62,7 +62,7 @@ MM_API_KEY= xxxxxxxxxxx
 ```
 #### 3. add MM_API_KEY value in .env file
 ```
-cd backend && npm i
+npm i
 ```
 #### 4. start backend with pm2
 ```
