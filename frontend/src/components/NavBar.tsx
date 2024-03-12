@@ -4,12 +4,16 @@ import {
   Box,
   Flex,
   IconButton,
+  Menu,
   Button,
   Stack,
   Collapse,
   useColorModeValue,
   useDisclosure,
   useColorMode,
+  MenuButton,
+  MenuList,
+  MenuItem,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -20,6 +24,17 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import NextLink from 'next/link'
 import { Link } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useSelector } from 'react-redux';
+import { User, logout } from '@/store/slice/userSlice'
+import { MdLogout, MdEdit } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
+import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { useRouter } from 'next/navigation'
+import { clearArtists } from '@/store/slice/artistsSlice'
+import { clearAlbums } from '@/store/slice/albumsSlice'
+import { clearTracks } from '@/store/slice/trackSlice'
+import { clearLyrics } from '@/store/slice/lyricsSlice'
 
 const NAV_ITEMS: Array<NavItem> = [
   {
@@ -29,9 +44,27 @@ const NAV_ITEMS: Array<NavItem> = [
 ]
 
 export default function NavBar() {
+  const dispatch = useDispatch();
   const { isOpen, onToggle } = useDisclosure()
   const { colorMode, toggleColorMode } = useColorMode()
+  const [localUserState, setLocalUserState] = useState<Record<string,any>>();
+  const { user } = useSelector((state : User) => state);
+  const isLoggedIn = user && user?.token?.length > 1
+  const { push } = useRouter();
 
+  useEffect(() => {
+    setLocalUserState(user);
+  }, [user]);
+
+  const logoutUser = async () => {
+    await dispatch(logout())
+    await dispatch(clearArtists())
+    await dispatch(clearAlbums())
+    await dispatch(clearTracks())
+    await dispatch(clearLyrics())
+    push('/')
+  }
+  
   return (
     <Box>
       <Flex
@@ -83,32 +116,57 @@ export default function NavBar() {
           >
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
-          
-          <Link as={NextLink} href='/sign-in'>
-            <Button 
-              fontSize={'sm'} fontWeight={400}
-              bg={''} 
-              _hover={{
-                bg: '',
-                textDecoration: 'underline'
-              }}>
-              Sign In
-            </Button>
-          </Link>
-          <Link as={NextLink} href='/sign-up'>
-            <Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'pink.400'}
-              _hover={{
-                bg: 'pink.300',
-              }}>
-              Sign Up
-            </Button>
-          </Link>
-          
+          {!isLoggedIn && 
+          <>
+            <Link as={NextLink} href='/sign-in'>
+              <Button 
+                fontSize={'sm'} fontWeight={400}
+                bg={''} 
+                _hover={{
+                  bg: '',
+                  textDecoration: 'underline'
+                }}>
+                Sign In
+              </Button>
+            </Link>
+            <Link as={NextLink} href='/sign-up'>
+              <Button
+                display={{ base: 'none', md: 'inline-flex' }}
+                fontSize={'sm'}
+                fontWeight={600}
+                color={'white'}
+                bg={'pink.400'}
+                _hover={{
+                  bg: 'pink.300',
+                }}>
+                Sign Up
+              </Button>
+            </Link>
+          </>}
+          {isLoggedIn && 
+          <>
+            <Menu>
+              <MenuButton
+                as={Button}
+                variant={'link'}
+                cursor={'pointer'}
+                minW={0}>
+                  <Stack  flex={{ base: 1, md: 0 }}
+                    justify={'flex-end'}
+                    direction={'row'}
+                  >
+                    <FaUserCircle color={colorMode == 'light' ? 'black' : 'white'}/>
+                  </Stack>
+                  
+              </MenuButton>
+              <MenuList>
+                {localUserState && 
+                  <MenuItem p={6}>Welcome {localUserState.user.name}</MenuItem>
+                }
+                <MenuItem onClick={logoutUser}><MdLogout />&nbsp;&nbsp;Logout</MenuItem>
+              </MenuList>
+            </Menu>
+          </>}
         </Stack>
       </Flex>
 
@@ -142,7 +200,6 @@ const DesktopNav = ({colorMode}: {colorMode: String}) => {
     </Stack>
   )
 }
-
 
 const MobileNav = () => {
   return (
