@@ -8,8 +8,15 @@ import {
   ListIcon,
   ListItem,
   Stack,
+  Stat,
+  StatArrow,
+  StatGroup,
+  StatHelpText,
+  StatLabel,
+  StatNumber,
   useColorModeValue,
 } from '@chakra-ui/react'
+import { useState } from 'react'
 import { Link } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/navigation'
@@ -26,8 +33,11 @@ const ArtistList = (
   const bgColorLight = checked ? 'purple.400' : 'gray.300'
   const colorTextDark = checked ? 'white' : 'purple.500'
   const bgColorDark = checked ? 'purple.400' : 'gray.300'
+  const [btnLoading, setBtnLoading] = useState(false)
+  const [randomGrowth] = useState((Math.random()*100).toFixed(2))
 
   const onViewAlbumClick = async (name: string, link: string) =>{
+    setBtnLoading(true)
     await dispatch(setArtistName({name}))
     await dispatch(setArtistId({id:artistId}))
     push(link)
@@ -78,12 +88,24 @@ const ArtistList = (
           </List>
         </Flex>
         <Flex minW={100}>
-          <Heading size={'md'}>{rating || 0}/100</Heading>
+          <StatGroup>
+            <Stat>
+              <StatLabel>Artist Rating</StatLabel>
+              <StatNumber>{rating || 0} / 100</StatNumber>
+              <StatHelpText>
+                <StatArrow type={rating >= 50 ? 'increase' : 'decrease'} />
+                {randomGrowth}%
+              </StatHelpText>
+            </Stat>
+          </StatGroup>
         </Flex>
       <Flex minW={100}>
           <Button
             fontSize={'sm'}
             size="md"
+            isLoading={btnLoading}
+            loadingText='Redirecting'
+            spinnerPlacement='end'
             fontWeight={600}
             color={useColorModeValue(colorTextLight, colorTextDark)}
             bgColor={useColorModeValue(bgColorLight, bgColorDark)}
