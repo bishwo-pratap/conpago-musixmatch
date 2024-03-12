@@ -50,20 +50,22 @@ brew services start redis
 - [moment](https://www.npmjs.com/package/moment): library for parsing, validating, manipulating, and formatting dates
 - MusixMatch API 
 
-#### rename .env.sample to .env file
+#### Steps
+#### 1. rename .env.sample to .env file
 ```
 cp .env.example .env
 ```
 
-#### add MM_API_KEY value in .env file
+#### 2. add MM_API_KEY value in .env file
 ```
 MM_API_KEY= xxxxxxxxxxx
 ```
-#### start backend with pm2
+#### 3. start backend with pm2
 ```
 cd backend && npm start
 ```
-#### start backend the vanilla way
+#### OR
+#### 3. start backend the vanilla way
 ```
 cd backend && npm run dev
 ```
