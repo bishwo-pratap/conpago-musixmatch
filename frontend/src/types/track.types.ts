@@ -1,8 +1,10 @@
 export interface TrackListProps {
-  name: string
-  country: string
-  twitter: string
-  rating: number
-  artistId: number
+  trackId: number
+  trackName: string
+  trackRating: number
+  explicit: number
+  numFavourite: string
+  trackShareUrl: string
+  primaryGenres: Record<string, any>
   checked?: boolean
 }
