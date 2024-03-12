@@ -17,11 +17,11 @@ import { User } from '@/store/slice/userSlice';
 import { useParams, useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Albums } from '@/store/slice/albumsSlice';
-import { Tracks, setTracks, clearTracks } from '@/store/slice/trackSlice';
+import { Tracks, setTracks } from '@/store/slice/trackSlice';
 import { Artists } from '@/store/slice/artistsSlice';
-import DataSkeleton from '@/components/dataSkeleton';
+import DataSkeleton from '@/components/DataSkeleton';
 
-const Tracks = () => {
+const TracksPage = () => {
   const pathParams = useParams();
   const { id } = pathParams;
   const { push } = useRouter();
@@ -157,4 +157,4 @@ const Tracks = () => {
   )
 }
 
-export default Tracks
+export default TracksPage

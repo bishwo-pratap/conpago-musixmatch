@@ -18,9 +18,9 @@ import { Artists } from '@/store/slice/artistsSlice';
 import { useParams, useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { Albums, setAlbums } from '@/store/slice/albumsSlice';
-import DataSkeleton from '@/components/dataSkeleton';
+import DataSkeleton from '@/components/DataSkeleton';
 
-const Albums = () => {
+const AlbumsPage = () => {
   const pathParams = useParams();
   const { id } = pathParams;
   const { push } = useRouter();
@@ -135,4 +135,4 @@ const Albums = () => {
   )
 }
 
-export default Albums
+export default AlbumsPage
