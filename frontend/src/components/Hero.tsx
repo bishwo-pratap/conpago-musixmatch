@@ -1,6 +1,14 @@
 'use client'
 
-import { Stack, Flex, Button, Text, VStack, useBreakpointValue } from '@chakra-ui/react'
+import { 
+  Stack,
+   Flex,
+   Button,
+   Text,
+   VStack,
+   useBreakpointValue,
+   Highlight 
+} from '@chakra-ui/react'
 import NextLink from 'next/link'
 import { Link } from '@chakra-ui/react'
 
@@ -25,7 +33,13 @@ export default function Hero() {
             fontWeight={700}
             lineHeight={1.2}
             fontSize={useBreakpointValue({ base: '3xl', md: '4xl' })}>
-            Unlock the Power of Lyrics with MusixMatch: Your Melodic Playground for Music and Words!
+              <Highlight
+                query='Power of Lyrics'
+                styles={{ px: '2', py: '1', rounded: 'full', bg: 'red.100', opacity:'0.5' }}
+              >
+                Unlock the Power of Lyrics with MusixMatch: Your Melodic Playground for Music and Words!
+              </Highlight>
+            
           </Text>
           <Stack direction={'row'}>
             <Link as={NextLink} href='/sign-in'>
