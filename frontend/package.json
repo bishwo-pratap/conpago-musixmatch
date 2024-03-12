@@ -1,7 +1,9 @@
 {
   "name": "conpago-musixmatch-frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": true, 
+  "repository": "https://github.com/bishwo-pratap/conpago-musixmatch.git",
+  "author": "Bishwo Pratap Bhagat <dev.bishwwwo@gmail.com>",
   "scripts": {
     "dev": "next dev -p 3001",
     "build": "next build",
