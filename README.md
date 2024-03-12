@@ -105,7 +105,7 @@ npm run dev
 #### Steps
 #### 1. Install Frontend Dependencies
 ```
-cd frontend && npm run dev
+cd frontend && npm i
 ```
 #### 2. Start Frontend
 ```
