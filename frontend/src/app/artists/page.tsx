@@ -80,7 +80,9 @@ const ArtistsPage = () => {
               md: 'row',
             }}>
             <Heading size={'lg'} >
-              Top artists in your country: <Text color="pink.400" display="inline">{user?.user?.country}</Text>
+              Top <Text color="pink.400" display="inline">10 </Text>
+              artists in your country: 
+              <Text color="pink.400" display="inline"> {user?.user?.country}</Text>
             </Heading>
           </Stack>
           <Divider />
