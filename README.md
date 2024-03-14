@@ -15,7 +15,7 @@ This is a technical assessment for Conpago. This project utilizes [MusixMatch](h
 #### 1. node.js
 
 ```
-node version >=18.12.1
+node version >=19
 ```
 
 #### Install NVM for node version management
@@ -24,8 +24,8 @@ node version >=18.12.1
 
 #### Get and use required node version
 ```
-nvm install 18
-nvm use 18
+nvm install 19
+nvm use 19
 ```
 
 #### 2. Redis
