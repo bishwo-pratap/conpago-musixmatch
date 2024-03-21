@@ -14,7 +14,7 @@ import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { IoArrowBack } from "react-icons/io5";
 import TrackList from '@/components/TrackList';
-import { User } from '@/store/slice/userSlice';
+import { User, logout } from '@/store/slice/userSlice';
 import { Albums } from '@/store/slice/albumsSlice';
 import DataSkeleton from '@/components/DataSkeleton';
 import { Artists } from '@/store/slice/artistsSlice';
@@ -72,6 +72,8 @@ const TracksPage = () => {
         setLoading(false)
       } catch (error) {
         console.error(error)
+        dispatch(logout());
+        redirect('/sign-in')
       }
     };
 

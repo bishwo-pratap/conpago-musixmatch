@@ -11,7 +11,7 @@ import { ApiHelper } from '@/api';
 import { routesConfig } from '@/config';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { User } from '@/store/slice/userSlice';
+import { User, logout } from '@/store/slice/userSlice';
 import ArtistList from '@/components/ArtistsList';
 import DataSkeleton from '@/components/DataSkeleton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -47,6 +47,8 @@ const ArtistsPage = () => {
         setLoading(false)
       } catch (error) {
         console.error(error)
+        dispatch(logout());
+        redirect('/sign-in')
       }
     };
 

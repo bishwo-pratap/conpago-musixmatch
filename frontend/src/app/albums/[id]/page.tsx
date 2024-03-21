@@ -13,7 +13,7 @@ import { routesConfig } from '@/config';
 import { redirect } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { IoArrowBack } from "react-icons/io5";
-import { User } from '@/store/slice/userSlice';
+import { User, logout } from '@/store/slice/userSlice';
 import AlbumsList from '@/components/AlbumsList';
 import DataSkeleton from '@/components/DataSkeleton';
 import { Artists } from '@/store/slice/artistsSlice';
@@ -70,6 +70,8 @@ const AlbumsPage = () => {
         setLoading(false)
       } catch (error) {
         console.error(error)
+        dispatch(logout());
+        redirect('/sign-in')
       }
     };
 
