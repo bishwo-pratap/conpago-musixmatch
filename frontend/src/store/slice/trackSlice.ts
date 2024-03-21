@@ -12,7 +12,7 @@ const tracksSlice = createSlice({
   initialState,
   reducers: {
     setTracks: (state, action: PayloadAction<Tracks>) => {
-      state.track_list = action.payload.track_list;
+      state.track_list = action?.payload?.track_list || [];
     },
     setTrackName:(state, action: PayloadAction<Tracks>) => {
       state.track_name = action.payload.name;

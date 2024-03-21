@@ -14,7 +14,7 @@ const albumsSlice = createSlice({
   initialState,
   reducers: {
     setAlbums: (state, action: PayloadAction<Albums>) => {
-      state.album_list = action.payload.album_list;
+      state.album_list = action?.payload?.album_list || [];
     },
     setAlbumName:(state, action: PayloadAction<Albums>) => {
       state.album_name = action.payload.name;

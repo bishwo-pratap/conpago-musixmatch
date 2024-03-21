@@ -14,7 +14,7 @@ const artistsSlice = createSlice({
   initialState,
   reducers: {
     setArtists: (state, action: PayloadAction<Artists>) => {
-      state.artist_list = action.payload.artist_list;
+      state.artist_list = action?.payload?.artist_list || [];
     },
     setArtistName:(state, action: PayloadAction<Artists>) => {
       state.artist_name = action.payload.name;
